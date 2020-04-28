@@ -47,6 +47,7 @@ export default {
 .tab-list {
   flex: 1;
   text-align: center;
+  align-self: center;
 }
 .active {
   color: red;
