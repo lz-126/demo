@@ -6,6 +6,10 @@ export const request = (config) => {
     timeout: 5000
   })
   // instance1.interceptors.response.use()
+
+  instance1.interceptors.response.use(res => {
+    return res.data
+  })
   return instance1(config)
 }
 

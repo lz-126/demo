@@ -1,12 +1,20 @@
 <template>
-  <div>0000</div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: "Category"
+  name: "Category",
+  data() {
+    return {};
+  },
+  methods: {},
+  watch: {},
+  computed: {},
+  created() {},
+  mounted() {}
 };
 </script>
 
-<style>
+<style scoped>
 </style>
