@@ -36,6 +36,8 @@ export default {
   position: sticky;
   top: 0;
   left: 0;
+  position: relative;
+  background-color: #fff;
 }
 .nav-bar .left,
 .right {

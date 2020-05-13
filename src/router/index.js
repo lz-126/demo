@@ -4,6 +4,7 @@ const Home = () => import("../views/home/Home.vue")
 const Category = () => import("../views/category/Category.vue")
 const Cart = () => import("../views/shoppingCart/Cart.vue")
 const Profile = () => import("../views/profile/Profile.vue")
+const Detail = () => import("../views/detail/Detail.vue")
 
 Vue.use(Router)
 const routes = [{
@@ -24,6 +25,12 @@ const routes = [{
 {
   path: "/profile",
   component: Profile
+},
+// 详情页
+{
+  // path: "/detail/:iid",通过params
+  path: "/detail",//query
+  component: Detail
 }
 ]
 

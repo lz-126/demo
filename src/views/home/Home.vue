@@ -19,7 +19,7 @@
       :pullupLoad="true"
       :probeType="3"
       class="better-scroll"
-      @bsScroll="homeScroll"
+      @bsscroll="homeScroll"
       ref="scroll"
       @pullup="loadMore"
     >
@@ -36,7 +36,7 @@
       />
       <goods-list :goods="goods[currentType].list"></goods-list>
     </better-scroll>
-    <back-top v-show="isShowTop" @click.native="backTop"></back-top>
+    <back-top v-show="isShowTop" @click.native="backTop" />
   </div>
 </template>
 
@@ -78,7 +78,8 @@ export default {
       },
       currentType: "pop",
       isShowTop: false,
-      isTapFixed: false
+      isTapFixed: false,
+      saveY: 0
     };
   },
   created() {
@@ -86,6 +87,19 @@ export default {
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
+  },
+  activated() {
+    console.log("激活");
+    this.$refs.scroll.scrollTo(0, this.saveY, 0);
+    this.$refs.scroll.refresh(); //刷新页面
+  },
+  deactivated() {
+    //停用
+    console.log("停用");
+    //通过获取scroll的y值来保存之前的坐标
+    // this.saveY = this.$refs.scroll.bs.y;
+    this.saveY = this.$refs.scroll.getScrollY();
+    // console.log(this.saveY);
   },
   methods: {
     //调用数据
@@ -129,7 +143,7 @@ export default {
       this.isTapFixed = position.y < -620;
     },
     backTop() {
-      this.$refs.scroll.bs.scrollTo(0, 0, 2000);
+      this.$refs.scroll.scrollTo(0, 0, 2000);
     },
     loadMore() {
       this.getHomeGoods(this.currentType);

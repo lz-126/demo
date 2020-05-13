@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-bar">
     <tabbar>
       <tabbar-item path="/home" activeColor="green">
         <div class="fa fa-home" slot="tab-icon"></div>
@@ -26,10 +26,11 @@
 </template>
 
 <script>
-import Tabbar from "./Tabber";
+import Tabbar from "./Tabbar";
 import TabbarItem from "./TabbarItem";
 
 export default {
+  name: "MainTabbar",
   components: {
     Tabbar,
     TabbarItem
@@ -39,4 +40,7 @@ export default {
 
 <style>
 @import "../../../assets/css/font-awesome-4.7.0/css/font-awesome.min.css";
+.main-bar {
+  font-size: 16px;
+}
 </style>

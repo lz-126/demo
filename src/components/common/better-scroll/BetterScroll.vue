@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" ref="wrapper">
     <div class="content">
       <slot></slot>
     </div>
@@ -35,14 +35,15 @@ export default {
     }
   },
   mounted() {
-    this.bs = new BS(".wrapper", {
+    //挂载
+    this.bs = new BS(this.$refs.wrapper, {
       click: this.click,
       pullUpLoad: this.pullupLoad,
       probeType: this.probeType // mouseWheel: true, // disableMouse: false, // disableTouch: false
     });
     //监听滚动事件
     this.bs.on("scroll", position => {
-      this.$emit("bsScroll", position);
+      this.$emit("bsscroll", position);
     });
     //监听上拉事件
     this.bs.on("pullingUp", () => {
@@ -52,6 +53,15 @@ export default {
   methods: {
     finishpullup() {
       this.bs.finishPullUp();
+    },
+    scrollTo(x, y, time = 300) {
+      this.bs && this.bs.scrollTo(x, y, time);
+    },
+    getScrollY() {
+      return this.bs ? this.bs.y : 0;
+    },
+    refresh() {
+      this.bs && this.bs.refresh();
     }
   }
 };

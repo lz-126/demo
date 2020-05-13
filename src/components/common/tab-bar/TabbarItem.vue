@@ -48,6 +48,7 @@ export default {
   flex: 1;
   text-align: center;
   align-self: center;
+  font-style: 16px;
 }
 .active {
   color: red;

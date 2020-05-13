@@ -28,10 +28,14 @@ export default {
       }
     }
   },
+  mounted() {
+    // this.getoffsetHeight();
+  },
   methods: {
     activeClick(index) {
       this.currentIndex = index;
       this.$emit("tabclick", index);
+      this.getoffsetHeight();
     }
   }
 };
